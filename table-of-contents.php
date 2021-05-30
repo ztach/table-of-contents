@@ -10,7 +10,7 @@ function add_gutenberg_assets() {
     wp_register_script(
         'table-of-contents',
         plugin_dir_url( __FILE__ ) . 'build/index.js',
-        array( 'wp-blocks' )
+        array( 'wp-blocks','wp-editor' )
     );
 
     wp_register_style(

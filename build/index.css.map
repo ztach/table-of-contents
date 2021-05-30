@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///./src/index.scss"],"names":[],"mappings":"AAAA;EACI;AACJ,C","file":"index.css","sourcesContent":["body {\n    color: red;\n}"],"sourceRoot":""}
+{"version":3,"sources":["webpack:///./src/index.scss"],"names":[],"mappings":"AAAA;EACI;EACA;AACJ,C","file":"index.css","sourcesContent":[".table-of-contents {\n    color: red;\n    padding: 20px;\n}"],"sourceRoot":""}
