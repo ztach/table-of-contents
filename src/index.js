@@ -1,5 +1,6 @@
 import './index.scss';
 import { registerBlockType } from '@wordpress/blocks';
+import { func } from 'assert-plus';
 
 
 registerBlockType('rob/table-of-contents', {
@@ -13,9 +14,34 @@ registerBlockType('rob/table-of-contents', {
 	keywords: [ 'zawartość', 'lista', 'table of contents' ],
 	category: 'content',
 
-	edit() {
-		return <p>Witamy we wtyczce naszekgo Stasia.</p>;
+	attributes: {
+		title: {
+		  type: 'string',
+		  source: 'html',
+		  selector: 'h2',
+		},
+	  },
+
+	edit({attributes,setAttributes}) {
+		
+		const {title} = attributes;
+
+		function setTitle(event){
+			const newTitle = event.target.value;
+			setAttributes({title:newTitle});
+		}
+
+		return <input 
+				type="text"
+				value={title}
+				onChange={setTitle}
+				/> 
+		 ;
 	},
 
-	save() {}
+	save({attributes}) {
+		const {title} = attributes;
+
+		return <h2>{title}</h2>
+	}
 });
