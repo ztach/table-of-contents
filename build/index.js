@@ -91,9 +91,52 @@
   !*** ./src/index.js ***!
   \**********************/
 /*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'layout',
+
+  edit() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Co\u015B innego, ni\u017C \"Hello world\".");
+  },
+
+  save() {}
+
+});
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: Cannot find module 'commondir'\nRequire stack:\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/find-cache-dir/index.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/babel-loader/lib/cache.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/babel-loader/lib/index.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/loadLoader.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/lib/NormalModule.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/lib/NormalModuleFactory.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/lib/Compiler.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/lib/webpack.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack-cli/bin/utils/validate-options.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack-cli/bin/utils/convert-argv.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack-cli/bin/cli.js\n- /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/bin/webpack.js\n    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:924:15)\n    at Function.Module._load (node:internal/modules/cjs/loader:769:27)\n    at Module.require (node:internal/modules/cjs/loader:996:19)\n    at require (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)\n    at Object.<anonymous> (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/find-cache-dir/index.js:4:19)\n    at Module._compile (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1121:10)\n    at Module.load (node:internal/modules/cjs/loader:972:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:813:14)\n    at Module.require (node:internal/modules/cjs/loader:996:19)\n    at require (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)\n    at Object.<anonymous> (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/babel-loader/lib/cache.js:26:22)\n    at Module._compile (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1121:10)\n    at Module.load (node:internal/modules/cjs/loader:972:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:813:14)\n    at Module.require (node:internal/modules/cjs/loader:996:19)\n    at require (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)\n    at Object.<anonymous> (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/babel-loader/lib/index.js:29:15)\n    at Module._compile (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1121:10)\n    at Module.load (node:internal/modules/cjs/loader:972:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:813:14)\n    at Module.require (node:internal/modules/cjs/loader:996:19)\n    at require (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)\n    at loadLoader (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/loadLoader.js:18:17)\n    at iteratePitchingLoaders (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:188:6\n    at runSyncOrAsync (/app/wycieczka/wp-content/plugins/table-of-contents/node_modules/webpack/node_modules/loader-runner/lib/LoaderRunner.js:124:12)");
+(function() { module.exports = window["wp"]["blocks"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["element"]; }());
 
 /***/ })
 

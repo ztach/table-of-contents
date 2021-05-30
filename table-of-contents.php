@@ -1,7 +1,8 @@
 <?php
 /**
- * Package Name: table-of-content
+ * Plugin Name: table-of-contents
  * Description: Spis treści w blokowym
+ * Version:     1.0.0
  */
 
 function add_gutenberg_assets() {
