@@ -104,11 +104,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
+
+
+const HighlightButton = props => Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
+  label: "Zaznaczenie",
+  className: "highlight-button",
+  onClick: () => {
+    props.onChange(Object(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_5__["toggleFormat"])(props.value, {
+      type: 'custom-formats/highlight'
+    }));
+  },
+  isActive: props.isActive
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Icon"], {
+  icon: "admin-customizer"
+}))));
+
+Object(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_5__["registerFormatType"])('custom-formats/highlight', {
+  title: 'Zaznaczenie',
+  tagName: 'span',
+  className: 'highlight',
+  edit: HighlightButton
+});
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('rob/table-of-contents', {
   title: 'Spis treści',
   description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
@@ -146,9 +169,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('rob
       type: 'array',
       source: 'children',
       selector: 'ol'
-    },
-    isHighlightButtonActive: {
-      type: 'boolean'
     }
   },
 
@@ -158,8 +178,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('rob
   }) {
     const {
       title,
-      list,
-      isHighlightButtonActive
+      list
     } = attributes;
 
     function setTitle(newTitle) {
@@ -174,34 +193,21 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('rob
       });
     }
 
-    function setHighlightButtonState() {
-      setAttributes({
-        isHighlightButtonActive: !isHighlightButtonActive
-      });
-    }
-
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       class: "table-of-contents-block"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      label: "Zaznaczenie",
-      className: "highlight-button",
-      onClick: setHighlightButtonState,
-      isActive: isHighlightButtonActive
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Icon"], {
-      icon: "admin-customizer"
-    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
       tagName: "h2",
       placeholder: "Tytu\u0142 spisu tre\u015Bci",
       value: title,
       onChange: setTitle,
-      allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/text-color', 'core/strikethrough']
+      allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/text-color', 'core/strikethrough', 'custom-formats/highlight']
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
       tagName: "ol",
       placeholder: "Spis tre\u015Bci",
       value: list,
       multiline: "li",
       onChange: setListContent,
-      allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/text-color', 'core/strikethrough']
+      allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/text-color', 'core/strikethrough', 'custom-formats/highlight']
     }));
   },
 
@@ -213,7 +219,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('rob
       list
     } = attributes;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      class: "table-of-contents"
+      class: "table-of-contents-block"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, title), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"].Content, {
       tagName: "ol",
       value: list
@@ -279,6 +285,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/rich-text":
+/*!**********************************!*\
+  !*** external ["wp","richText"] ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["richText"]; }());
 
 /***/ })
 

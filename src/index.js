@@ -2,6 +2,33 @@ import './index.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import { Toolbar, ToolbarButton, Icon } from "@wordpress/components";
 import { RichText, BlockControls } from "@wordpress/block-editor";
+import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
+
+const HighlightButton = (props) => (
+	<BlockControls>
+	  <Toolbar>
+		<ToolbarButton
+		  label="Zaznaczenie"
+		  className="highlight-button"
+		  onClick={() => {
+			props.onChange(
+			  toggleFormat(props.value, { type: 'custom-formats/highlight' })
+			);
+		  }}
+		  isActive={props.isActive}
+		>
+		  <Icon icon="admin-customizer" />
+		</ToolbarButton>
+	  </Toolbar>
+	</BlockControls>
+  );
+
+  registerFormatType('custom-formats/highlight', {
+	title: 'Zaznaczenie',
+	tagName: 'span',
+	className: 'highlight',
+	edit: HighlightButton,
+  });
 
 registerBlockType('rob/table-of-contents', {
 	title: 'Spis treści',
@@ -25,14 +52,11 @@ registerBlockType('rob/table-of-contents', {
 			source: 'children',
 			selector: 'ol', 
 		},
-		isHighlightButtonActive: {
-			type: 'boolean',
-		  },
 	  },
 
 	edit({attributes,setAttributes}) {
 		
-		const {title,list,isHighlightButtonActive} = attributes;
+		const {title,list} = attributes;
 
 		function setTitle(newTitle){
 			setAttributes({title:newTitle});
@@ -42,60 +66,46 @@ registerBlockType('rob/table-of-contents', {
 			setAttributes({ list:newList });
 		}
 
-		function setHighlightButtonState() {
-			setAttributes({ isHighlightButtonActive: !isHighlightButtonActive });
-		  }
-
-  return (
-      <div class="table-of-contents-block">
-        <BlockControls>
-          <Toolbar>
-            <ToolbarButton
-              label="Zaznaczenie"
-              className="highlight-button"
-              onClick={setHighlightButtonState}
-              isActive={isHighlightButtonActive}
-            >
-              <Icon icon="admin-customizer" />
-            </ToolbarButton>
-          </Toolbar>
-        </BlockControls>
-        <RichText
-          tagName="h2"
-          placeholder="Tytuł spisu treści"
-          value={title}
-          onChange={setTitle}
-          allowedFormats={[
-            'core/bold',
-            'core/italic',
-            'core/link',
-            'core/text-color',
-            'core/strikethrough',
-          ]}
-        />
-        <RichText
-          tagName="ol"
-          placeholder="Spis treści"
-          value={list}
-          multiline="li"
-          onChange={setListContent}
-          allowedFormats={[
-            'core/bold',
-            'core/italic',
-            'core/link',
-            'core/text-color',
-            'core/strikethrough',
-          ]}
-        />
-      </div>
-    );
-  },
+		return (
+			<div class="table-of-contents-block">
+			  <RichText
+				tagName="h2"
+				placeholder="Tytuł spisu treści"
+				value={title}
+				onChange={setTitle}
+				allowedFormats={[
+				  'core/bold',
+				  'core/italic',
+				  'core/link',
+				  'core/text-color',
+				  'core/strikethrough',
+				  'custom-formats/highlight',
+				]}
+			  />
+			  <RichText
+				tagName="ol"
+				placeholder="Spis treści"
+				value={list}
+				multiline="li"
+				onChange={setListContent}
+				allowedFormats={[
+				  'core/bold',
+				  'core/italic',
+				  'core/link',
+				  'core/text-color',
+				  'core/strikethrough',
+				  'custom-formats/highlight',
+				]}
+			  />
+			</div>
+		  );
+		},
 	  
 		save({ attributes }) {
 		  const { title, list } = attributes;
 	  
 		  return (
-			<div class="table-of-contents">
+			<div class="table-of-contents-block">
 			  <h2>{title}</h2>
 			  <RichText.Content tagName="ol" value={list} />
 			</div>

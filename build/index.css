@@ -1,13 +1,13 @@
-.table-of-contents {
+.table-of-contents-block {
   color: red;
   padding: 20px;
 }
 
-.table-of-contents ol li {
+.table-of-contents-block ol li {
   text-decoration: none;
 }
 
-.table-of-contents ol li a {
+.table-of-contents-block ol li a {
   color: red;
 }
 
